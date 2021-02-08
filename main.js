@@ -67,6 +67,10 @@ function mealRecipeModal(meal) {
             <li><span class="check-icon">&#x2714;</span>${meal.strMeasure4} ${meal.strIngredient4}</li>
             <li><span class="check-icon">&#x2714;</span>${meal.strMeasure5} ${meal.strIngredient5}</li>
             <li><span class="check-icon">&#x2714;</span>${meal.strMeasure6} ${meal.strIngredient6}</li>
+            <li><span class="check-icon">&#x2714;</span>${meal.strMeasure7} ${meal.strIngredient7}</li>
+            <li><span class="check-icon">&#x2714;</span>${meal.strMeasure8} ${meal.strIngredient8}</li>
+            <li><span class="check-icon">&#x2714;</span>${meal.strMeasure9} ${meal.strIngredient9}</li>
+            <li><span class="check-icon">&#x2714;</span>${meal.strMeasure10} ${meal.strIngredient10}</li>
         </ul>
     `;
     mealDetailsContent.innerHTML = html;
