@@ -10,38 +10,29 @@ mealList.addEventListener('click', getMealRecipe);
 // ================
 
 function getMealList() {
-
     let searchInputTxt = document.getElementById('inputSearch').value.trim();
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
         .then(response => response.json())
         .then(data => {
-            for (let i = 0; i < 9; i++) {
-
-            }
             let html = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
-
                     html += `
-                   
-                        <div class="col-md-4" data-id = "${meal.idMeal}">
+                        <div class="col-md-3" data-id = "${meal.idMeal}">
                             <div class="food-item">
-                                <div id="meal"></div>
+                               
                                 <img class="img-fluid" src="${meal.strMealThumb}" alt="">
                                 <h3>${meal.strMeal}</h3>
-                                <button class="recipe-btn btn btn-primary">Details</button>
+                                <button id="product-show" class="recipe-btn btn btn-primary">Details</button>
                             </div>
                         </div>
-                   
-                   
-                `;
+                    `;
                 });
                 mealList.classList.remove('notFound');
             } else {
-                html = "Sorry, we didn't find any meal!";
+                html = "দুঃখিত, আপনার সার্চকৃত খাবার টি পাওয়া যায় নি, আরেকটি খাবার পছন্দ করুন";
                 mealList.classList.add('notFound');
             }
-
             mealList.innerHTML = html;
         });
 }
@@ -61,10 +52,11 @@ function mealRecipeModal(meal) {
     console.log(meal);
     meal = meal[0];
     let html = `
-        <span id="closeBtn"><i class="fas fa-times    "></i></span>
+        
         <h2>${meal.strMeal}</h2>
         <div class="row">
             <div class="col-12">
+               
                 <img src="${meal.strMealThumb}" alt="">
             </div>
         </div>
@@ -80,9 +72,3 @@ function mealRecipeModal(meal) {
     mealDetailsContent.innerHTML = html;
     mealDetailsContent.parentElement.classList.add('showRecipe');
 }
-document.addEventListener("click", function() {
-    const closeBtn = document.getElementById('closeBtn');
-    closeBtn.style.display = 'none';
-    const closeArea = document.getElementById('food_details');
-    closeArea.style.display = 'none';
-})
